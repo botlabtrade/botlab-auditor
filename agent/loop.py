@@ -21,7 +21,7 @@ import urllib.error
 import urllib.request
 from typing import Dict, Iterator, List, Optional
 
-from .tools import TOOLS, AuditState
+from .tools import TOOLS, AuditState, overall_status
 
 DEFAULT_BASE_URL = "https://api.vultrinference.com/v1"
 DEFAULT_MODEL = "llama-3.3-70b-instruct"
@@ -200,8 +200,13 @@ def _template_verdict(state: AuditState) -> str:
                 parts.append(f"Significance: PSR(0)={psr_v:.2f}, DSR={dsr_v:.2f} after "
                              f"{s['n_trials']} trial(s); mean {s['mean_r']:+.3f}R over {s['n']} trades, "
                              f"win rate {s['win_rate']:.0f}%.")
+    vetoed = overall_status(state)[1] is not None
     if rep is not None:
-        if rep.status == "READY_FOR_MICRO_LIVE":
+        if rep.status == "READY_FOR_MICRO_LIVE" and vetoed:
+            parts.append("The six readiness gates all pass on these numbers, but the verdict above "
+                         "overrules them: gates score the trades they are given, and these trades "
+                         "could not have been taken in real time. Do not trade this live.")
+        elif rep.status == "READY_FOR_MICRO_LIVE":
             parts.append("All six readiness gates pass. This is a reason to run a small, closely "
                          "monitored forward test - not a promise of profit.")
         elif rep.status == "WATCH":
