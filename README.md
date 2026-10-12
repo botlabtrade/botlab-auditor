@@ -6,6 +6,16 @@ hurt by the code it runs.**
 Built for the Vultr *Agent Rush* challenge **"Blast Radius Zero: Safe Agent Execution on Vultr"**
 (3–8 November 2026). MIT licensed.
 
+![A strategy that peeks at the next bar: every readiness gate passes and the agent still rejects it](docs/screenshots/verdict_lookahead.png)
+
+*All six statistical gates pass. The agent rejects the strategy anyway, because the trades could not
+have been taken in real time.*
+
+![Hostile upload contained: shell command, process spawn and network call all refused](docs/screenshots/sandbox_contained.png)
+
+*A hostile upload, contained. Every refusal is shown with the rule that caused it, and the audit
+carries on.*
+
 ---
 
 ## The problem
