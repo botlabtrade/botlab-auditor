@@ -245,7 +245,19 @@ Stated plainly, because the rules ask and because the distinction is the honest 
   [botlab.org.uk](https://botlab.org.uk), which is where the six gates and their thresholds come
   from.
 
-**Built during the hackathon (everything in this repository):**
+- **A sibling project, disclosed up front** -
+  [botlab-bot-log-auditor](https://github.com/botlabtrade/botlab-bot-log-auditor) was written for a
+  different hackathon. It audits an exchange trade log and sells a PDF report; it shares the idea of
+  "score a trade log against the six gates" and nothing else. This project is about the other half
+  of the problem: running a stranger's **code** without trusting it. No file is shared between the
+  two repositories.
+
+**Written for this challenge (everything in this repository):**
+
+A prototype of the pieces below was written on 12 October 2026, before the 3-8 November build
+window opened, and the commit history shows it. Nothing here is claimed as same-week work. During
+the build window the project is deployed on Vultr, the container backend is brought up and proven,
+and the work listed in [`submission/build_log.md`](submission/build_log.md) is done in the open.
 
 - `sandbox/` - the runner, the PEP 578 audit-hook policy, the two interchangeable backends and the
   container image.
