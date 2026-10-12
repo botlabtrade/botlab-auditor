@@ -1,0 +1,12 @@
+# BOTLAB Auditor - host (web) dependencies.
+# The sandbox container has its own, much smaller, dependency list (see sandbox/Dockerfile).
+fastapi>=0.110
+uvicorn[standard]>=0.27
+python-multipart>=0.0.9
+pandas>=2.0
+numpy>=1.24
+# The open-source gate / statistics library this project is built on (built before the hackathon).
+honest_backtest @ git+https://github.com/botlabtrade/botlab-oss.git
+# Tests only.
+pytest>=8.0
+httpx>=0.27
